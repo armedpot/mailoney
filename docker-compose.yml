@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+
+  mailoney:
+    container_name: mailoney
+    restart: always
+    environment:
+     - HPFEEDS_SERVER=${HPFEEDS_SERVER}
+     - HPFEEDS_IDENT=${HPFEEDS_IDENT}
+     - HPFEEDS_SECRET=${HPFEEDS_SECRET}
+     - HPFEEDS_PORT=${HPFEEDS_PORT}
+     - HPFEEDS_CHANNELPREFIX=${HPFEEDS_CHANNELPREFIX}
+    ports:
+     - "25:25"
+    image: "armedpot/mailoney:${MAILONEY_VERSION}"
+    read_only: true
+    volumes:
+     - ~/data/mailoney/log:/home/mailoney/logs
