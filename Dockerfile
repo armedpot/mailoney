@@ -41,4 +41,4 @@ STOPSIGNAL SIGKILL
 USER mailoney:mailoney
 WORKDIR /home/mailoney
 
-CMD ["python3", "mailoney.py", "-i", "0.0.0.0", "-p", "25", "-s", "mail.tebeke.de", "-t", "schizo_open_relay"]
+CMD ["python3", "mailoney.py", "-i", "0.0.0.0", "-p", "25", "-s", "$([[ -z ${MAILONEY_DOMAIN} ]] && echo "tebeba.de" || echo ${MAILONEY_DOMAIN})", "-t", "schizo_open_relay"]
